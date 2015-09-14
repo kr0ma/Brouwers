@@ -19,7 +19,7 @@ class BrouwerServiceImpl implements BrouwerService{
 	@Override
 	@ModifyingTransactionalServiceMethod
 	public void create(Brouwer brouwer) {
-		brouwerDAO.create(brouwer);		
+		brouwer.setId(brouwerDAO.save(brouwer).getId());		
 	}
 
 	@Override
@@ -29,7 +29,7 @@ class BrouwerServiceImpl implements BrouwerService{
 
 	@Override
 	public List<Brouwer> findByNaam(String beginNaam) {
-		return brouwerDAO.findByNaam(beginNaam);
+		return brouwerDAO.findByNaamStartingWith(beginNaam);
 	}	
 	
 }
