@@ -3,12 +3,11 @@ package be.vdab.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import be.vdab.dao.BrouwerDAO;
 import be.vdab.entities.Brouwer;
 
-@Service
+@ReadOnlyTransactionalService
 class BrouwerServiceImpl implements BrouwerService{
 	private final BrouwerDAO brouwerDAO;
 
@@ -18,6 +17,7 @@ class BrouwerServiceImpl implements BrouwerService{
 	}
 
 	@Override
+	@ModifyingTransactionalServiceMethod
 	public void create(Brouwer brouwer) {
 		brouwerDAO.create(brouwer);		
 	}
