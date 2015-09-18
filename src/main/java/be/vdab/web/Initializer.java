@@ -8,6 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import be.vdab.dao.CreateDAOBeans;
 import be.vdab.datasource.CreateDataSourceBean;
+import be.vdab.restservices.CreateRestControllerBeans;
 import be.vdab.services.CreateServiceBeans;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -23,7 +24,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { CreateControllerBeans.class };
+		return new Class<?>[] { CreateControllerBeans.class, CreateRestControllerBeans.class };
 	}
 
 	@Override
