@@ -2,6 +2,7 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix='v' uri='http://vdab.be/tags'%>
+<%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
 <!doctype html>
 <html lang='nl'>
 <head>
@@ -30,7 +31,10 @@
 					<td>${brouwer.adres.straat}</td>
 					<td>${brouwer.adres.huisNr}</td>
 					<td>${brouwer.adres.postcode}</td>
-					<td>${brouwer.adres.gemeente}</td>
+					<spring:url value='/temperatuur/{plaats}' var="temperatuurURL">
+						<spring:param name='plaats' value='${brouwer.adres.gemeente}' />
+					</spring:url>
+					<td>${brouwer.adres.gemeente}<a href='${temperatuurURL}'> temperatuur</a></td>
 					<td class="rechts"><fmt:formatNumber value="${brouwer.omzet}" /></td>
 				</tr>
 			</c:forEach>
